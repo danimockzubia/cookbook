@@ -1,0 +1,28 @@
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <p>total recipes: <%= Recipe.count %></h4>
+    </div>
+  </div>
+<% @recipes.each do |recipe|%>
+  <div class= "card mt-3">
+    <div class= "card-body">
+      <h4 class="recipe-title"><%= link_to recipe.title, recipe_path(recipe)%></h4>
+      <p>~our rating: <%=recipe.rating %></p>
+      <div class="flat-card-actions">
+        <%= link_to 'Edit', edit_recipe_path(recipe), class: 'ms-3 text-warning' %>
+        <%= link_to "Remove", recipe_path(recipe),
+            method: :delete,
+            data: { confirm: "Are you sure?" },
+            class: 'ms-3 text-danger'
+        %>
+      </div>
+    </div>
+  </div>
+<%end%>
+
+  <div class="row mt-5">
+   <p><%= link_to 'Add a new recipe :)', new_recipe_path %></p>
+  </div>
+</div>

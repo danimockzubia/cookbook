@@ -1,0 +1,7 @@
+<%= simple_form_for [ @recipe ] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :ingredients %>
+  <%= f.input :rating %>
+  <%= f.input :description %>
+  <%= f.submit "~submit recipe bb~", class: "btn btn-primary" %>
+<% end %>
