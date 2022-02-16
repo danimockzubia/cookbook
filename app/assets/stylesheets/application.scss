@@ -1,26 +1,26 @@
 @import "bootstrap/scss/bootstrap";
 
+body {
+  background-color: rgb(255, 244, 244);
+}
 a {
   color: rgb(0, 0, 0);
   text-decoration: none;
 }
 
-// .card {
-//   height: 175px;
-//   padding-bottom: 0;
-//   // padding: 10px;
-// }
-// #recipe-row {
-//   justify-content: space-between;
-// }
-// .card {
-//   flex-direction: row;
-//   width: 700px;
+h2 {
+  font-family: 'Hahmlet', serif;
+}
+
+// .navbar {
+//   background-color: rgb(214, 230, 214);
+//   width: fit-content !important;
 // }
 
 .flex {
   display: flex;
 }
+
 .flex-align {
   display: flex;
   align-items: center;
@@ -60,5 +60,36 @@ a {
 .btn {
   background-color: hotpink;
   color: aliceblue;
-  margin-top: 4px;
+}
+.nav-title {
+  text-decoration: underline;
+}
+
+.title-n:hover {
+  color: blue;
+}
+
+#nav-row {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+#title {
+  text-align: center;
+}
+
+.search-btn{
+  display: flex;
+}
+
+#search-row {
+  display: flex;
+  flex-wrap: nowrap;
+  max-width: 55%;
+  margin: auto;
+}
+
+.search-btn {
+  width: 75px;
+  text-align: center;
 }

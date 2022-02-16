@@ -1,59 +1,77 @@
 <head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@600&display=swap" rel="stylesheet">
 </head>
-<div class="container mt-3">
-  <div class="row">
-    <div class="col-6">
-      <p>Recipe Count: <%= Recipe.count %></p>
-    </div>
-    <div class="col-6">
-      <% if current_user %>
-            <%= link_to destroy_user_session_path, method: :delete do %>
-              <div class=" btn float-end" >Log out</div>
+<div class="container">
+
+  <div class="container mt-5">
+    <div class="row" id='nav-row'>
+      <div class="col-3">
+        <p class="title-n"><%= link_to 'Top Recipes ', top_recipes_path, class: 'nav-title' %></p>
+      </div>
+        <div class='col-6' id='title'>
+          <h2><%= link_to "Abb and Dan's Recipes", recipes_path %> </h2>
+        </div>
+        <div class="col-3">
+            <% if current_user %>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                    <div class=" btn float-end" >Log out</div>
+                  <% end %>
+              <% else %>
+              <%= link_to new_user_registration_path, class: "navbar-btn btn btn-success d-flex justify-content-between align-items-center" do %>
+                <p class="letter-spacing mb-0">Sign up</p>
             <% end %>
-        <% else %>
-        <%= link_to new_user_registration_path, class: "navbar-btn btn btn-success d-flex justify-content-between align-items-center" do %>
-          <p class="letter-spacing mb-0">Sign up</p>
-    <% end %>
-  <% end %>
-      <div class='row'>
-        <%= form_tag recipes_path, method: :get do %>
+          <% end %>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class='container mt-3'>
+    <div class='row mt-5' id='search-row'>
+      <div class='search'><%= form_tag recipes_path, method: :get do %>
           <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Find a recipe"
+              params[:query],
+              class: "form-control",
+              placeholder: "Find a recipe"
           %>
-          <%= submit_tag "Search", class: "btn btn-primary" %>
+        </div>
+          <%= submit_tag "Search", class: "btn search-btn" %>
         <% end %>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <% @recipes.each do |recipe| %>
-      <div class="col-md-4">
-        <div class="recipe-card">
-          <div class="recipe-card-content">
-            <div class="recipe-card-title">
-              <h4><%= link_to recipe.title, recipe_path(recipe) %></h4>
+  <div class="container mt-3">
+    <div class="row">
+      <% @recipes.each do |recipe| %>
+        <div class="col-md-4">
+          <div class="recipe-card">
+            <div class="recipe-card-content">
+              <div class="recipe-card-title">
+                <h4><%= link_to recipe.title, recipe_path(recipe) %></h4>
+              </div>
+              <p><%= recipe.rating %> <i class="fa fa-star" aria-hidden="true"></i></p>
             </div>
-            <p><%= recipe.rating %> <i class="fa fa-star" aria-hidden="true"></i></p>
-          </div>
-          <div class="recipe-card-actions">
-            <%= link_to 'Edit', edit_recipe_path(recipe), class: 'ms-3 text-warning' %>
-            <%= link_to recipe_path(recipe), method: :delete, data: { confirm: "Delete #{recipe.title}?" } do %>
-              <i class="fa fa-trash-o float-end" aria-hidden="true"></i>
-            <% end %>
+            <div class="recipe-card-actions">
+              <%= link_to 'Edit', edit_recipe_path(recipe), class: 'ms-3 text-warning' %>
+              <%= link_to recipe_path(recipe), method: :delete, data: { confirm: "Delete #{recipe.title}?" } do %>
+                <i class="fa fa-trash-o float-end" aria-hidden="true"></i>
+              <% end %>
 
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<div class='container'>
-  <div class="col-sm">
-    <button type="button" class="btn btn-primary btn-lg"><%= link_to 'Add a new recipe :)', new_recipe_path %></button>
+  <div class='container'>
+    <div class="col-sm">
+      <%= link_to 'Add a new recipe :)', new_recipe_path, class: "btn btn-lg"%>
+    </div>
   </div>
 </div>
