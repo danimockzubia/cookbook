@@ -8,7 +8,12 @@ skip_before_action :authenticate_user!, only: [:destroy, :update, :edit, :new, :
   end
 
   def index
-    @recipes = policy_scope(Recipe).order(created_at: :desc)
+    if params[:query].present?
+      sql_query = "title ILIKE :query OR ingredients ILIKE :query"
+      @recipes = Recipe.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @recipes = policy_scope(Recipe).order(created_at: :desc)
+    end
   end
 
   def new

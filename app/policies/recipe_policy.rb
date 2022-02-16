@@ -7,6 +7,10 @@ class RecipePolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    true
+  end
+
   def new?
     user.admin?
   end
