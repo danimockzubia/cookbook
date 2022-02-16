@@ -7,7 +7,15 @@
       <p>Recipe Count: <%= Recipe.count %></p>
     </div>
     <div class="col-6">
-      <p class= "btn btn-primary mt-3 float-end"><%=link_to 'Sign In', new_user_session_path  %></p>
+      <% if current_user %>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <div class=" btn float-end" >Log out</div>
+            <% end %>
+        <% else %>
+        <%= link_to new_user_registration_path, class: "navbar-btn btn btn-success d-flex justify-content-between align-items-center" do %>
+          <p class="letter-spacing mb-0">Sign up</p>
+    <% end %>
+  <% end %>
     </div>
   </div>
 
