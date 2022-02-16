@@ -31,11 +31,10 @@
           </div>
           <div class="recipe-card-actions">
             <%= link_to 'Edit', edit_recipe_path(recipe), class: 'ms-3 text-warning' %>
-            <%= link_to "Remove", recipe_path(recipe),
-                method: :delete,
-                data: { confirm: "Are you sure?" },
-                class: 'ms-3 text-danger'
-            %>
+            <%= link_to recipe_path(recipe), method: :delete, data: { confirm: "Delete #{recipe.title}?" } do %>
+              <i class="fa fa-trash-o float-end" aria-hidden="true"></i>
+            <% end %>
+
           </div>
         </div>
       </div>
