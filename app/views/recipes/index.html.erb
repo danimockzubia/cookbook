@@ -9,7 +9,7 @@
   <div class="container mt-5">
     <div class="row" id='nav-row'>
       <div class="col-3">
-        <p class="title-n"><%= link_to 'Top Recipes ', top_recipes_path, class: 'nav-title' %></p>
+        <p class="title-n"><%= link_to 'Random Recipe', recipe_path(@recipes.sample), class: 'nav-title' %></p>
       </div>
         <div class='col-6' id='title'>
           <h2><%= link_to "Abb and Dan's Recipes", recipes_path %> </h2>
@@ -31,7 +31,7 @@
 
 
   <div class='container mt-3'>
-    <div class='row mt-5' id='search-row'>
+    <div class='row mt-5 mb-5' id='search-row'>
       <div class='search'><%= form_tag recipes_path, method: :get do %>
           <%= text_field_tag :query,
               params[:query],
@@ -45,29 +45,49 @@
     </div>
   </div>
 
-  <div class="container mt-3">
+  <%# <div class="container mt-3">
     <div class="row">
       <% @recipes.each do |recipe| %>
-        <div class="col-md-4">
+        <%# <div class="col-md-4">
           <div class="recipe-card">
             <div class="recipe-card-content">
               <div class="recipe-card-title">
                 <h4><%= link_to recipe.title, recipe_path(recipe) %></h4>
-              </div>
-              <p><%= recipe.rating %> <i class="fa fa-star" aria-hidden="true"></i></p>
+              <%# </div>
+              <div class="recipe-card-desc">
+                <p class="text-muted" id='recipe-cat'><i class="fa fa-cutlery mr-1" aria-hidden="true">  <%=recipe.category%></i></p>
+              <%# </div>
             </div>
             <div class="recipe-card-actions">
-              <%= link_to 'Edit', edit_recipe_path(recipe), class: 'ms-3 text-warning' %>
-              <%= link_to recipe_path(recipe), method: :delete, data: { confirm: "Delete #{recipe.title}?" } do %>
-                <i class="fa fa-trash-o float-end" aria-hidden="true"></i>
+              <%= link_to 'Edit', edit_recipe_path(recipe), class: 'btn' %>
+              <%# <%= link_to recipe_path(recipe), method: :delete, class: 'delete-btn', data: { confirm: "Delete #{recipe.title}?" } do %>
+                <%# <i class="fa fa-trash-o float-end" aria-hidden="true"></i>
               <% end %>
-
+<%#
             </div>
           </div>
         </div>
       <% end %>
+    <%# </div>
+  </div> %>
+
+    <div class='container d-flex flex-column '>
+      <div class="row row-cols-1 row-cols-lg-3 justify-content-center">
+        <% @recipes.each do |recipe| %>
+          <div class="col mb-5" style="padding: 0 20px; height: 250px;">
+            <div class="card h-100" style="box-shadow: 0 0 15px rgba(0,0,0,0.2);">
+              <div class="card-body d-flex flex-column justify-content-between">
+                <h5 class="card-title"><%= recipe.title %></h5>
+                <div class="card-footer text-muted flex-grow-1 mb-3 d-flex flex-column justify-content-between">
+                  <p><i class="fa fa-cutlery mr-2" style="color:#FB743C;"></i> <%= recipe.category %></p>
+                </div>
+                <%= link_to "Check it out", recipe_path(recipe), class: "btn text-center btn-block"%>   </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
+
 
   <div class='container'>
     <div class="col-sm">

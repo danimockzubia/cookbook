@@ -1,6 +1,33 @@
 
-<ul class="list-group">
-  <%=@recipe.title%>
-</ul>
+<div class="container mt-5">
+  <div class="row" id='nav-row'>
+    <div class="col-3">
+      <p class="title-n"><%= link_to 'Top Recipes ', top_recipes_path, class: 'nav-title' %></p>
+    </div>
+      <div class='col-6' id='title'>
+        <h2><%= link_to "Abb and Dan's Recipes", recipes_path %> </h2>
+      </div>
+      <div class="col-3">
+          <% if current_user %>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <div class=" btn float-end" >Log out</div>
+                <% end %>
+            <% else %>
+            <%= link_to new_user_registration_path, class: "navbar-btn btn btn-success d-flex justify-content-between align-items-center" do %>
+              <p class="letter-spacing mb-0">Sign up</p>
+          <% end %>
+        <% end %>
+        </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Back', recipes_path %> |
+  <div class="container my-5">
+    <div class="row justify-content-md-center">
+      <h3 class='edit-title'>~ <%=@recipe.title%> ~</h3>
+    </div>
+  </div>
+
+<div class='container'>
+    <%= link_to 'Back', recipes_path %> |
+</div>

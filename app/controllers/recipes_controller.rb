@@ -61,7 +61,7 @@ skip_before_action :authenticate_user!, only: [:destroy, :update, :edit, :new, :
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :rating, :description, :ingredients)
+    params.require(:recipe).permit(:title, :description, :ingredients, :category)
   end
 
   def set_recipe
