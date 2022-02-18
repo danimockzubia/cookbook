@@ -2,7 +2,7 @@
   <div class="container mt-5">
     <div class="row" id='nav-row'>
       <div class="col-3">
-        <p class="title-n"><%= link_to 'Top Recipes ', top_recipes_path, class: 'nav-title' %></p>
+        <p class="title-n"><%= link_to 'Back ', recipes_path, class: 'nav-title' %></p>
       </div>
         <div class='col-6' id='title'>
           <h2><%= link_to "Abb and Dan's Recipes", recipes_path %> </h2>
@@ -27,7 +27,7 @@
     <div class="col-md-6">  <%= simple_form_for @recipe do |f| %>
     <%= f.input :title %>
     <%= f.input :ingredients %>
-    <p class="mt-3"> </p>
+  <p class="mt-3"> </p>
     <%= f.input :category, :collection => ["Week-night", "Special", "Show-offy", "Basic"], prompt: 'Select Category', label: false %>
     <%= f.input :description %>
     <div class='button-sec mt-4'>
