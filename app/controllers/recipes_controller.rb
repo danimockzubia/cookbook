@@ -2,10 +2,7 @@ class RecipesController < ApplicationController
 before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 skip_before_action :authenticate_user!, only: [:destroy, :update, :edit, :new, :create]
 
-  def top
-    @recipes = Recipe.where(rating: 5)
-    authorize @recipe
-  end
+
 
   def index
     if params[:query].present?
