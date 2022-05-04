@@ -108,6 +108,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.1-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.1-x86_64-linux)
+      racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.2.3)
     pg_search (2.3.6)
@@ -220,6 +222,8 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
@@ -245,7 +249,7 @@ DEPENDENCIES
   webpacker (~> 4.0)
 
 RUBY VERSION
-   ruby 2.7.3p183
+   ruby 3.0.3p157
 
 BUNDLED WITH
-   2.2.24
+   2.2.32
